@@ -1,19 +1,20 @@
 package com.study.bevarage.model;
 
 import lombok.Data;
+import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
 import java.io.Serializable;
 import java.util.List;
-import java.util.Set;
 
 
 @Entity
 @Table(name = "DRINK")
 @Data
+@NoArgsConstructor
 public class Drink implements Serializable {
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @GeneratedValue
     @Column(name = "Drink_Id")
     private Long id;
 

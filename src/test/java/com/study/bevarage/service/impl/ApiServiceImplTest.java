@@ -16,7 +16,7 @@ public class ApiServiceImplTest extends BevarageApplicationIntegrationTests {
     }
 
     @Test
-    void getTotalOrderPrice() {
+    public void getTotalOrderPrice() {
         final String[] orders = {"Coffee"};
         final Double price = apiService.getTotalOrderPrice(orders);
         assertNotNull(price);

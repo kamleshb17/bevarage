@@ -1,16 +1,15 @@
 package com.study.bevarage.service.impl;
 
-import org.junit.jupiter.api.Test;
+import com.study.bevarage.BevarageApplicationIntegrationTests;
+import org.junit.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 
-import java.util.ArrayList;
 import java.util.HashMap;
-import java.util.List;
 import java.util.Map;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
-public class PriceCalculationServiceImplTest {
+public class PriceCalculationServiceImplTest extends BevarageApplicationIntegrationTests {
 
     private PriceCalculationServiceImpl priceCalculationService;
 
@@ -20,7 +19,7 @@ public class PriceCalculationServiceImplTest {
     }
 
     @Test
-    void getTotalOrderPrice() {
+    public void getTotalOrderPrice() {
         final Map<String, String[]> expectedOrderMap = new HashMap<String, String[]>();
         expectedOrderMap.put("Coffee", null);
 

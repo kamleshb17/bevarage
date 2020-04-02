@@ -1,7 +1,7 @@
 Spring:
   datasource:
-    url: jdbc:h2:file:F:/workspace/data/beveragedb;DB_CLOSE_ON_EXIT=FALSE;DB_CLOSE_DELAY=-1;
-    #url: jdbc:h2:mem:beveragedb
+    #url: jdbc:h2:file:F:/workspace/data/beveragedb;DB_CLOSE_ON_EXIT=FALSE;DB_CLOSE_DELAY=-1;
+    url: jdbc:h2:mem:beveragedb
     driver-class-name: org.h2.Driver
     username: sa
     password: mypass
@@ -16,6 +16,15 @@ Spring:
 
 logging:
   level:
-    root: ERROR
+    web: info
+    root: info
+
+management:
+  server:
+    servlet:
+      context-path: /bevarage
+server:
+  port: 9090
+
 
 

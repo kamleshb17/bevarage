@@ -3,6 +3,7 @@ package com.study.bevarage.service.impl;
 import com.study.bevarage.service.OrderService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.stereotype.Service;
 
 import java.util.Arrays;
 import java.util.List;
@@ -12,6 +13,7 @@ import java.util.function.Function;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
+@Service
 public class OrderServiceImpl implements OrderService {
     private final Logger logger = LoggerFactory.getLogger(this.getClass());
     public static final String COMMA = ",";

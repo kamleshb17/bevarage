@@ -1,7 +1,7 @@
 package com.study.bevarage.service.impl;
 
 import com.study.bevarage.BevarageApplicationIntegrationTests;
-import org.junit.jupiter.api.Test;
+import org.junit.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 
 import java.util.ArrayList;
@@ -21,7 +21,7 @@ public class OrderServiceImplTest extends BevarageApplicationIntegrationTests {
     }
 
     @Test
-    void getOrders() {
+    public void getOrders() {
         final String[] orders = {"Coffee"};
         final List<Map<String, String[]>> orderMap= orderService.getOrders(orders);
         final Map<String, String[]> map = new HashMap<String, String[]>();

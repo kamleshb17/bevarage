@@ -7,15 +7,17 @@ import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.stereotype.Service;
 
 import javax.validation.constraints.NotNull;
 
+@Service
 public class BeverageApiImpl implements BevarageApi {
     private final Logger logger = LoggerFactory.getLogger(this.getClass());
     private ApiService apiService;
 
     @Autowired
-    public void setOrderService(ApiService apiService) {
+    public void setApiService(ApiService apiService) {
         this.apiService = apiService;
     }
 

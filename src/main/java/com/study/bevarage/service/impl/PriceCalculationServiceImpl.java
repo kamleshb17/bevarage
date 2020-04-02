@@ -7,11 +7,16 @@ import com.study.bevarage.service.PriceCalculationService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.context.event.ApplicationReadyEvent;
 import org.springframework.cache.annotation.Cacheable;
+import org.springframework.context.event.EventListener;
+import org.springframework.stereotype.Service;
 
+import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+@Service
 public class PriceCalculationServiceImpl implements PriceCalculationService {
     private final Logger logger = LoggerFactory.getLogger(this.getClass());
     private DrinkRepository drinkRepository;
@@ -37,6 +42,7 @@ public class PriceCalculationServiceImpl implements PriceCalculationService {
 
         for(Map.Entry<String, String[]> entry: map.entrySet()){
             final Drink drink = drinkMap.get(entry.getKey());
+            logger.info("drink loaded from drinkmap {}", drink);
             price = drink.getPrice();
             final List<Ingredient> ingredients = drink.getIngredients();
 
@@ -55,8 +61,10 @@ public class PriceCalculationServiceImpl implements PriceCalculationService {
     }
 
     @Cacheable
+    @EventListener(ApplicationReadyEvent.class)
     public void GetDrinkPrice(){
         final List<Drink> drinks = drinkRepository.findAll();
+        drinkMap = new HashMap<>();
         drinks.forEach( drink ->  {
                 drinkMap.put(drink.getDrinkType(), drink);
         });
