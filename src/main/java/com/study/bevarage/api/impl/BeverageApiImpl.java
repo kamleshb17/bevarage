@@ -8,7 +8,10 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
+import org.springframework.util.ObjectUtils;
 
+import javax.validation.Valid;
+import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotNull;
 
 @Service
@@ -22,18 +25,22 @@ public class BeverageApiImpl implements BevarageApi {
     }
 
     @Override
-    public ResponseEntity getTotalOrderPrice(@NotNull String[] orders) {
-        logger.info("{} getTotalOrderPrice started wih order ", this.getClass(), orders );
+    public ResponseEntity getTotalOrderPrice(final String[] orders) {
+        logger.info("{} getTotalOrderPrice started wih order ", this.getClass(), orders);
         ResponseEntity entity = null;
-        try {
-            final Double price = apiService.getTotalOrderPrice(orders);
-            entity = new ResponseEntity(price, HttpStatus.OK);
-        }catch (Exception e){
-            entity = new ResponseEntity(HttpStatus.EXPECTATION_FAILED, HttpStatus.INTERNAL_SERVER_ERROR);
-            logger.error(" {} getTotalOrderPrice exception {} ", this.getClass() , e);
-        }
 
-        logger.info("{} getTotalOrderPrice completed ", this.getClass() );
-       return entity;
+        if (ObjectUtils.isEmpty(orders)) {
+            entity = new ResponseEntity(HttpStatus.BAD_REQUEST, HttpStatus.BAD_REQUEST);
+        } else {
+            try {
+                final Double price = apiService.getTotalOrderPrice(orders);
+                entity = new ResponseEntity(price, HttpStatus.OK);
+            } catch (Exception e) {
+                entity = new ResponseEntity(HttpStatus.EXPECTATION_FAILED, HttpStatus.INTERNAL_SERVER_ERROR);
+                logger.error(" {} getTotalOrderPrice exception {} ", this.getClass(), e);
+            }
+        }
+        logger.info("{} getTotalOrderPrice completed ", this.getClass());
+        return entity;
     }
 }

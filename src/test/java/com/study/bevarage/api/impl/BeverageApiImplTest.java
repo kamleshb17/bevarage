@@ -2,11 +2,17 @@ package com.study.bevarage.api.impl;
 
 import com.study.bevarage.BevarageApplicationIntegrationTests;
 import org.junit.Test;
+import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
 import static org.junit.jupiter.api.Assertions.*;
 
+@RunWith(SpringJUnit4ClassRunner.class)
+@SpringBootTest()
 public class BeverageApiImplTest extends BevarageApplicationIntegrationTests {
 
     private BeverageApiImpl beverageApi;
@@ -35,6 +41,8 @@ public class BeverageApiImplTest extends BevarageApplicationIntegrationTests {
     @Test
     public void test_GetTotalOrderPriceForNoOrder() {
         final String[] orders = null;
-        assertThrows(Exception.class, () -> beverageApi.getTotalOrderPrice(orders) );
+        final ResponseEntity entity = beverageApi.getTotalOrderPrice(orders);
+        assertEquals(entity.getStatusCode(), HttpStatus.BAD_REQUEST);
+      //  assertThrows(Exception.class, () -> beverageApi.getTotalOrderPrice(orders) );
     }
 }

@@ -24,7 +24,7 @@ public class Drink implements Serializable {
     @Column(name = "Drink_Price")
     private double price;
 
-    @OneToMany(cascade = CascadeType.ALL)
+    @OneToMany(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
     @JoinTable(name = "DRINK_INGREDIENTS", joinColumns = @JoinColumn (name= "Drink_Id"),
             inverseJoinColumns = @JoinColumn(name = "Ingredient_Id") )
     private List<Ingredient> ingredients;

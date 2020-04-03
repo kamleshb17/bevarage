@@ -27,16 +27,13 @@ public class OrderServiceImpl implements OrderService {
 
     private CompletableFuture<Map<String, String[]>> getAllOrder(final String order) {
         logger.info(" {} getAllOrder in action with order {}", this.getClass(), order);
-        return CompletableFuture.supplyAsync(() -> {
-            return getOrderMap(order);
-        });
-
+        return CompletableFuture.supplyAsync(() -> getOrderMap(order));
     }
 
     private Map<String, String[]> getOrderMap(final String order) {
         logger.info(" {} getOrderMap in action ", this.getClass());
-        final Map<String, String[]> orderMap = Stream.of(order).map(str -> str.split(COMMA)).collect(Collectors.toMap(str -> str[0],
-                Function.identity()));
+        final Map<String, String[]> orderMap = Stream.of(order).map(str -> str.split(COMMA)).
+                collect(Collectors.toMap(str -> str[0], str -> str));
         logger.info(" {} getOrderMap action completed {}", this.getClass(), orderMap);
         return orderMap;
     }
