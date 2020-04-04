@@ -1,6 +1,6 @@
 package com.study.bevarage.service.impl;
 
-import com.study.bevarage.service.ApiService;
+import com.study.bevarage.service.BussinessService;
 import com.study.bevarage.service.OrderService;
 import com.study.bevarage.service.PriceCalculationService;
 import org.slf4j.Logger;
@@ -13,7 +13,7 @@ import java.util.Map;
 import java.util.stream.Collectors;
 
 @Service
-public class ApiServiceImpl implements ApiService {
+public class BussinessServiceImpl implements BussinessService {
 
     private final Logger logger = LoggerFactory.getLogger(this.getClass());
 

@@ -1,7 +1,6 @@
 package com.study.bevarage.api.impl;
 
-import com.study.bevarage.api.BevarageApi;
-import com.study.bevarage.service.ApiService;
+import com.study.bevarage.service.BussinessService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -10,18 +9,14 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 import org.springframework.util.ObjectUtils;
 
-import javax.validation.Valid;
-import javax.validation.constraints.NotBlank;
-import javax.validation.constraints.NotNull;
-
 @Service
-public class BeverageApiImpl implements BevarageApi {
+public class BeverageServiceImpl extends BeverageApiServicesImpl {
     private final Logger logger = LoggerFactory.getLogger(this.getClass());
-    private ApiService apiService;
+    private BussinessService bussinessService;
 
     @Autowired
-    public void setApiService(ApiService apiService) {
-        this.apiService = apiService;
+    public void setBussinessService(BussinessService bussinessService) {
+        this.bussinessService = bussinessService;
     }
 
     @Override
@@ -33,7 +28,7 @@ public class BeverageApiImpl implements BevarageApi {
             entity = new ResponseEntity(HttpStatus.BAD_REQUEST, HttpStatus.BAD_REQUEST);
         } else {
             try {
-                final Double price = apiService.getTotalOrderPrice(orders);
+                final Double price = bussinessService.getTotalOrderPrice(orders);
                 entity = new ResponseEntity(price, HttpStatus.OK);
             } catch (Exception e) {
                 entity = new ResponseEntity(HttpStatus.EXPECTATION_FAILED, HttpStatus.INTERNAL_SERVER_ERROR);

@@ -18,8 +18,8 @@ public class Drink implements Serializable {
     @Column(name = "Drink_Id")
     private Long id;
 
-    @Column(name = "Drink_Type")
-    private String drinkType;
+    @Column(name = "Drink_Name")
+    private String drinkName;
 
     @Column(name = "Drink_Price")
     private double price;

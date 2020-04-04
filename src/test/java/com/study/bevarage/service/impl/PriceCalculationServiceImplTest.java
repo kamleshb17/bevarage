@@ -1,15 +1,20 @@
 package com.study.bevarage.service.impl;
 
-import com.study.bevarage.BevarageApplicationIntegrationTests;
+import com.study.bevarage.BevarageFactoryApplicationIntegrationTests;
 import org.junit.Test;
+import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
 import java.util.HashMap;
 import java.util.Map;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
-public class PriceCalculationServiceImplTest extends BevarageApplicationIntegrationTests {
+@RunWith(SpringJUnit4ClassRunner.class)
+@SpringBootTest()
+public class PriceCalculationServiceImplTest extends BevarageFactoryApplicationIntegrationTests {
 
     private PriceCalculationServiceImpl priceCalculationService;
 
@@ -21,9 +26,9 @@ public class PriceCalculationServiceImplTest extends BevarageApplicationIntegrat
     @Test
     public void getTotalOrderPrice() {
         final Map<String, String[]> expectedOrderMap = new HashMap<String, String[]>();
-        expectedOrderMap.put("Coffee", null);
+        expectedOrderMap.put("Coffee", new String[]{"coffee"});
 
         final Double price = priceCalculationService.getTotalOrderPrice(expectedOrderMap);
-        assertEquals(price, 5.00);
+        assertEquals(5.00, price);
     }
 }

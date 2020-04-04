@@ -16,8 +16,8 @@ public class Ingredient implements Serializable {
     @GeneratedValue
     private Long id;
 
-    @Column(name = "Ingredient_Type")
-    private String ingredientType;
+    @Column(name = "Ingredient_Name")
+    private String ingredientName;
     @Column(name = "Ingredient_Price")
     private double price;
 }

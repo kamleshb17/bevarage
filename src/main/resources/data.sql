@@ -1,11 +1,11 @@
-INSERT INTO DRINK (Drink_Id, Drink_Type, Drink_Price) VALUES
+INSERT INTO DRINK (Drink_Id, Drink_Name, Drink_Price) VALUES
   (1, 'Chai', 4.50),
   (2, 'Coffee', 5.00),
   (3, 'Banana Smoothie', 6.00),
   (4, 'Strawberry Shake', 7.00),
   (5, 'Mojito', 7.50);
 
-INSERT INTO INGREDIENT (Ingredient_Id, Ingredient_Type, Ingredient_Price) VALUES
+INSERT INTO INGREDIENT (Ingredient_Id, Ingredient_Name, Ingredient_Price) VALUES
   (1, 'Milk', 1.00),
   (2, 'Sugar', 0.50),
   (3, 'Soda', 0.50),

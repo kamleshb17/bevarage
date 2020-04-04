@@ -5,7 +5,7 @@ DROP TABLE IF EXISTS DRINK;
 
 CREATE TABLE DRINK (
   Drink_Id INT(11)  PRIMARY KEY,
-  Drink_Type VARCHAR(250) NOT NULL,
+  Drink_Name VARCHAR(250) NOT NULL,
   Drink_Price Number(3, 2) NOT NULL
 
 );
@@ -14,7 +14,7 @@ CREATE TABLE DRINK (
 
 CREATE TABLE INGREDIENT (
   Ingredient_Id INT(11) PRIMARY KEY,
-  Ingredient_Type VARCHAR(250) NOT NULL,
+  Ingredient_Name VARCHAR(250) NOT NULL,
   Ingredient_Price Number(3, 2) NOT NULL
 
 );

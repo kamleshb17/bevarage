@@ -1,6 +1,6 @@
 package com.study.bevarage.api.impl;
 
-import com.study.bevarage.BevarageApplicationIntegrationTests;
+import com.study.bevarage.BevarageFactoryApplicationIntegrationTests;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -13,12 +13,12 @@ import static org.junit.jupiter.api.Assertions.*;
 
 @RunWith(SpringJUnit4ClassRunner.class)
 @SpringBootTest()
-public class BeverageApiImplTest extends BevarageApplicationIntegrationTests {
+public class BeverageApiImplTest extends BevarageFactoryApplicationIntegrationTests {
 
-    private BeverageApiImpl beverageApi;
+    private BeverageApiServicesImpl beverageApi;
 
     @Autowired
-    public void setBeverageApi(BeverageApiImpl beverageApi) {
+    public void setBeverageApi(BeverageApiServicesImpl beverageApi) {
         this.beverageApi = beverageApi;
     }
 
